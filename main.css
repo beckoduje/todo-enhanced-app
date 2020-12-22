@@ -1,0 +1,533 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  /* box-sizing: inherit; ovo jebe stvar izgleda, nije tekst u sredini botuna */
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  padding-left: 7%;
+  padding-right: 7%;
+}
+
+.main-container {
+  background-image: linear-gradient(
+    to right,
+    rgb(217, 239, 246),
+    rgb(217, 239, 246)
+  );
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 13rem max-content 1fr 10rem;
+}
+
+.main-container.blur-effect {
+  filter: blur(3px); /* radi rada s formom */
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.25)
+    ),
+    linear-gradient(to right, rgb(217, 239, 246), rgb(217, 239, 246));
+  pointer-events: none; /* da onemogući tipkanje po elementima kad je pop-up otvoren */
+}
+
+.header-section {
+  background-color: #0e6b89;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-section__container {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 1rem;
+  align-items: baseline;
+  color: white;
+  text-transform: uppercase;
+  font-size: 2.5rem;
+}
+
+.header-section__title-1 {
+  font-size: inherit;
+  font-weight: normal;
+}
+
+.header-section__title-2 {
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+
+.header-section__create-btn {
+  font-family: "Roboto", sans-serif;
+  color: #0e6b89;
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  font-weight: 500;
+  background-color: white;
+  border: none;
+  padding: 1.5rem;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+  border-radius: 25px;
+  box-shadow: 0 4px 4px #000;
+  outline: none;
+  cursor: pointer;
+}
+
+.tasks-category-section {
+  background-color: #394e55;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  align-items: center;
+  font-weight: 700;
+}
+
+.tasks-category-section__list {
+  display: flex;
+  flex-basis: 70%;
+  flex-wrap: wrap;
+  font-size: 2rem;
+  list-style: none;
+  text-transform: uppercase;
+}
+
+.tasks-category-section__single-task-category,
+.tasks-category-section__all-task-category,
+.tasks-category-section__add-task {
+  padding: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.tasks-category-section__add-task:hover {
+  color: #ff4500;
+}
+
+.tasks-category-section__single-task-category {
+  position: relative;
+}
+
+.tasks-category-section__delete-btn {
+  position: absolute;
+  top: 0.2rem;
+  right: 0.2rem;
+  text-transform: lowercase;
+}
+
+.tasks-category-section__delete-btn.material-icons {
+  font-size: 1rem;
+}
+
+.tasks-category-section__delete-btn.material-icons:hover {
+  background: #ff4500;
+  color: white;
+}
+
+.tasks-category-section__single-task-category,
+.tasks-category-section__all-task-category {
+  border-right: 1px solid white;
+}
+
+.tasks-category-section__single-task-category.selected-category,
+.tasks-category-section__all-task-category.selected-category {
+  background-color: white;
+  color: #394e55;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.state-buttons {
+  margin-right: 1.7rem;
+  display: flex;
+  align-items: center;
+}
+
+.unfinished-btn,
+.finished-btn {
+  font-family: "Roboto", sans-serif;
+  border: none;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  color: white;
+  font-weight: 700;
+  border-radius: 30px;
+  box-shadow: 0 4px 4px #000;
+  outline: none;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  cursor: pointer;
+}
+
+.unfinished-btn {
+  margin-right: 1rem;
+}
+
+.unfinished-btn,
+.finished-btn {
+  color: white;
+  background-color: #0e6b89;
+}
+
+.unfinished-btn.selected-btn,
+.finished-btn.selected-btn {
+  background-color: white;
+  color: orangered;
+}
+
+/* Lista svih zadataka */
+.tasks-list-section {
+  padding-top: 1rem;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.tasks-list {
+  list-style: none;
+  display: grid;
+  grid-gap: 1rem;
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.single-task {
+  display: flex;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  background-color: #b5e0ee;
+  border-radius: 12px;
+  align-items: center;
+}
+
+.single-task__description {
+  margin-right: auto;
+}
+
+.single-task__priority,
+.single-task__fin-unfin-btn,
+.single-task__delete-btn {
+  margin-right: 1rem;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.single-task__priority.top-priority {
+  color: red;
+}
+
+.single-task__priority.medium-priority {
+  color: #0e6b89;
+}
+
+.single-task__priority.low-priority {
+  color: green;
+}
+
+.single-task__fin-unfin-btn,
+.single-task__delete-btn {
+  color: 0e6b89;
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 15px;
+  border: 0.5px solid #0e6b89;
+  outline: none;
+  cursor: pointer;
+}
+
+.single-task__delete-btn {
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+}
+
+.material-icons {
+  font-size: 1.6rem;
+}
+
+/* Botun za novi task */
+
+.create-new-task-btn-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-new-task-btn-section__create-btn {
+  font-family: "Roboto", sans-serif;
+  color: #0e6b89;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 500;
+  background-color: white;
+  border: none;
+  padding: 1.2rem;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 4px #000;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Forma za kreiranje novog zadatka */
+.create-new-task-form-section {
+  position: fixed;
+  background-color: white;
+  z-index: 100;
+  height: 48rem;
+  width: 70rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 35px;
+  padding: 4rem;
+  box-sizing: border-box;
+  display: none;
+}
+
+.create-new-task-form-section.open-close-form {
+  display: block;
+}
+
+.create-new-task-form {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.create-new-task-form__label {
+  font-size: 2.1rem;
+  font-weight: 300;
+  margin-bottom: 0.3rem;
+}
+
+.create-new-task-form__select,
+.create-new-task-form__description {
+  font-size: 1.5rem;
+  font-weight: 300;
+  border-radius: 12px;
+  background-color: #d9eff6;
+  outline: none;
+  border: none;
+  padding: 1rem;
+  width: 70%;
+  margin-bottom: 2.9rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.create-new-task-form__description {
+  width: 100%;
+  height: 10rem;
+  box-sizing: border-box;
+  font-size: 1.5rem;
+  resize: none;
+}
+
+.create-new-task-form__create-btn,
+.create-new-task-form__cancel-btn {
+  font-size: 2.1rem;
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  background-color: #0e6b89;
+  text-transform: uppercase;
+  padding: 0.6rem;
+  font-family: "Roboto", sans-serif;
+  box-shadow: 0 4px 4px #000;
+  cursor: pointer;
+}
+
+.create-new-task-form__create-btn {
+  margin-right: 1rem;
+}
+
+.create-new-task-form__cancel-btn {
+  color: #0e6b89;
+  background-color: white;
+  border: 1px solid #0e6b89;
+}
+
+.material-icons.close-x {
+  top: -1.5rem;
+  right: -1.5rem;
+  position: absolute;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Kreiranje nove kategorije */
+.create-new-category-section {
+  width: 35rem;
+  position: fixed;
+  background-color: white;
+  z-index: 100;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 35px;
+  padding: 3rem;
+  box-sizing: border-box;
+  display: none;
+}
+
+.create-new-category-section.open-close-form {
+  display: block;
+}
+
+.create-new-category-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-new-category-form__label {
+  font-size: 2.1rem;
+  font-weight: 300;
+  margin-bottom: 0.3rem;
+}
+
+.create-new-category-form__description {
+  font-size: 1.5rem;
+  font-weight: 300;
+  border-radius: 12px;
+  background-color: #d9eff6;
+  outline: none;
+  border: none;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.create-new-category-form__create-btn,
+.create-new-category-form__cancel-btn {
+  font-size: 1.5rem;
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  background-color: #0e6b89;
+  text-transform: uppercase;
+  padding: 0.5rem;
+  font-family: "Roboto", sans-serif;
+  box-shadow: 0 4px 4px #000;
+  cursor: pointer;
+}
+
+.create-new-category-form__create-btn {
+  margin-right: 1rem;
+}
+
+.create-new-category-form__cancel-btn {
+  color: #0e6b89;
+  background-color: white;
+  border: 1px solid #0e6b89;
+}
+
+/* 1000px */
+@media only screen and (max-width: 63em) {
+  .tasks-category-section {
+    flex-direction: column-reverse;
+  }
+  .state-buttons {
+    padding: 1.5rem;
+  }
+  .tasks-category-section__list {
+    flex-direction: column;
+    align-self: stretch;
+    margin-right: none;
+    flex-wrap: nowrap;
+  }
+  .tasks-category-section__delete-btn.material-icons {
+    font-size: 2.5rem;
+    top: 1rem;
+    right: 1rem;
+  }
+  .tasks-category-section__single-task-category,
+  .tasks-category-section__all-task-category {
+    border-right: none;
+  }
+}
+
+/* 900px */
+@media only screen and (max-width: 56em) {
+  .main-container {
+    grid-template-rows: max-content max-content 1fr 10rem;
+  }
+  .header-section {
+    padding: 1.5rem;
+  }
+  .header-section__container {
+    grid-auto-flow: row;
+    justify-items: center;
+  }
+}
+
+/* 820px */
+@media only screen and (max-width: 820px) {
+  .create-new-task-form-section.open-close-form {
+    width: 80%;
+  }
+  .create-new-task-form__select.category-selection,
+  .create-new-task-form__select.priority-selection {
+    width: 100%;
+  }
+}
+
+/* 600px */
+@media only screen and (max-width: 38em) {
+  .single-task {
+    display: grid;
+    grid-row-gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .single-task__description {
+    grid-column: 1 / 4;
+  }
+  .single-task__fin-unfin-btn {
+    justify-self: stretch;
+  }
+  .single-task__delete-btn {
+    justify-self: end;
+  }
+  .header-section__container,
+  .header-section__create-btn {
+    font-size: 2rem;
+  }
+  .create-new-task-btn-section__create-btn {
+    font-size: 1.5rem;
+  }
+  .create-new-task-form-section.open-close-form {
+    height: auto;
+    width: 100%;
+    padding: 3rem;
+  }
+  .create-new-task-form__select.category-selection,
+  .create-new-task-form__select.priority-selection {
+    margin-bottom: 1rem;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .create-new-category-section.open-close-form {
+    width: 100%;
+  }
+}

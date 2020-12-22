@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="main.css" />
+    <script src="script.js" defer></script>
+    <title>Todo List App</title>
+  </head>
+
+  <body>
+    <div class="main-container">
+      <section class="header-section">
+        <div class="header-section__container">
+          <h1 class="header-section__title-1">Check your tasks</h1>
+          <h2 class="header-section__title-2">Or</h2>
+          <button class="header-section__create-btn">Create a new one</button>
+        </div>
+      </section>
+
+      <section class="tasks-category-section">
+        <ul class="tasks-category-section__list">
+          <li
+            class="tasks-category-section__all-task-category selected-category"
+          >
+            All
+          </li>
+          <li class="tasks-category-section__add-task">+</li>
+        </ul>
+        <div class="state-buttons">
+          <button class="unfinished-btn selected-btn">Unfinished</button>
+          <button class="finished-btn">Finished</button>
+        </div>
+      </section>
+
+      <section class="tasks-list-section">
+        <ul class="tasks-list">
+          <!-- <li class="single-task">
+                        <p class="single-task__description"></p>
+                        <span class="single-task__priority top-priority">Top priority</span>
+                        <button class="single-task__fin-unfin-btn">Finish</button>
+                        <button class="single-task__delete-btn"><i class="material-icons">clear</i></button>
+                    </li>
+                    <li class="single-task">
+                        <p class="single-task__description"></p>
+                        <span class="single-task__priority top-priority">Top priority</span>
+                        <button class="single-task__fin-unfin-btn">Finish</button>
+                        <button class="single-task__delete-btn"><i class="material-icons">clear</i></button>
+                    </li>
+                    <li class="single-task">
+                        <p class="single-task__description"></p>
+                        <span class="single-task__priority medium-priority">Medium priority</span>
+                        <button class="single-task__fin-unfin-btn">Finish</button>
+                        <button class="single-task__delete-btn"><i class="material-icons">clear</i></button>
+                    </li>
+                    <li class="single-task">
+                        <p class="single-task__description"></p>
+                        <span class="single-task__priority medium-priority">Top priority</span>
+                        <button class="single-task__fin-unfin-btn">Finish</button>
+                        <button class="single-task__delete-btn"><i class="material-icons">clear</i></button>
+                    </li>
+                    <li class="single-task">
+                        <p class="single-task__description"></p>
+                        <span class="single-task__priority low-priority">Low priority</span>
+                        <button class="single-task__fin-unfin-btn">Finish</button>
+                        <button class="single-task__delete-btn"><i class="material-icons">clear</i></button>
+                    </li>
+                    <li class="single-task">
+                        <p class="single-task__description"></p>
+                        <span class="single-task__priority top-priority">Top priority</span>
+                        <button class="single-task__fin-unfin-btn">Finish</button>
+                        <button class="single-task__delete-btn"><i class="material-icons">clear</i></button>
+                    </li> -->
+        </ul>
+      </section>
+
+      <section class="create-new-task-btn-section">
+        <button class="create-new-task-btn-section__create-btn">
+          Create new task
+        </button>
+      </section>
+    </div>
+
+    <!-- Forma za unošenje novog taska -->
+    <section class="create-new-task-form-section">
+      <form class="create-new-task-form" method="GET">
+        <label class="create-new-task-form__label" for="category">
+          Chose task category:
+        </label>
+        <select
+          id="category"
+          class="create-new-task-form__select category-selection"
+          name="category"
+        >
+          <!-- <option class="create-new-task-form__select-option catregory-selection-option">
+                        Programming
+                    </option> -->
+        </select>
+        <label class="create-new-task-form__label" for="priority">
+          Chose priority level:
+        </label>
+        <select
+          id="priority"
+          class="create-new-task-form__select priority-selection"
+          name="priority"
+        >
+          <option
+            class="create-new-task-form__select-option priority-selection-option"
+            value="Top-priority"
+          >
+            Top-priority
+          </option>
+          <option
+            class="create-new-task-form__select-option priority-selection-option"
+            value="Medium-priority"
+          >
+            Medium-priority
+          </option>
+          <option
+            class="create-new-task-form__select-option priority-selection-option"
+            value="Low-priority"
+          >
+            Low-priority
+          </option>
+        </select>
+        <label class="create-new-task-form__label" for="description">
+          Task description:
+        </label>
+
+        <textarea
+          id="description"
+          maxlength="50"
+          class="create-new-task-form__description"
+        ></textarea>
+        <div class="create-new-task-form__buttons">
+          <button class="create-new-task-form__create-btn" type="submit">
+            Create
+          </button>
+          <button class="create-new-task-form__cancel-btn">Cancel</button>
+        </div>
+        <i class="material-icons close-x">clear</i>
+      </form>
+    </section>
+
+    <section class="create-new-category-section">
+      <form class="create-new-category-form" method="GET">
+        <label class="create-new-category-form__label" for="description">
+          Category name:
+        </label>
+        <input
+          type="text"
+          id="description"
+          maxlength="25"
+          class="create-new-category-form__description"
+        />
+        <div class="create-new-category-form__buttons">
+          <button class="create-new-category-form__create-btn" type="submit">
+            Create
+          </button>
+          <button class="create-new-category-form__cancel-btn">Cancel</button>
+        </div>
+      </form>
+    </section>
+  </body>
+</html>
